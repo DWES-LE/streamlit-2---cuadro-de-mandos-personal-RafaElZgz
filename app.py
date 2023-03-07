@@ -3,6 +3,8 @@ import streamlit as st
 
 import numpy as np
 
+import altair as alt
+
 csv_file = "libros.csv"
 
 database = pd.read_csv(csv_file)
@@ -20,6 +22,31 @@ st.markdown('### Buscar un libro')
 title = st.text_input('Escribe el título del libro que quieres buscar', '1984')
 data_grouped = database[database['Título'] == title]
 st.dataframe(data_grouped, 1000, 50)
+
+st.markdown('---')
+
+st.markdown('### Gráficas')
+
+st.markdown('##### Tendencias representadas en una gráfica de barras')
+
+showBy = st.selectbox('Puedes escoger en base a qué quieres ver la gráfica', ('Editorial', 'Precio', 'Año', 'Páginas'))
+
+data_grouped = database.groupby(showBy).size()
+
+side_chart = (
+    alt.Chart(database)
+    .mark_bar()
+    .encode(
+        x=alt.X(showBy, type='nominal'),
+        y=alt.Y('count()', title="Cantidad de libros", type='quantitative'),
+        color=alt.Color(showBy, type='nominal')
+    )
+    .properties(
+        width=600,
+    )
+)
+
+st.altair_chart(side_chart, use_container_width=True)
 
 st.markdown('---')
 
@@ -66,15 +93,3 @@ pages_max = database["Páginas"].max()
 pages_min, pages_max = st.select_slider('Mostrar con un número de páginas entre', options=database.sort_values(by="Páginas")["Páginas"].unique(), value=(pages_min, pages_max))
 data_grouped = database[(database['Páginas'] >= pages_min) & (database['Páginas'] <= pages_max)]
 st.dataframe(data_grouped, 1000, 200)
-
-st.markdown('---')
-
-st.markdown('### Gráficas')
-
-st.markdown('##### Tendencias representadas en una gráfica de barras')
-
-showBy = st.selectbox('Puedes escoger en base a qué quieres ver la gráfica', ('Editorial', 'Precio', 'Año', 'Páginas'))
-
-data_grouped = database.groupby(showBy).size()
-
-st.bar_chart(data_grouped)
