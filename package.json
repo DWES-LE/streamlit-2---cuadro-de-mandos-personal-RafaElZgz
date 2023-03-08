@@ -1,0 +1,7 @@
+{
+    "scripts": {
+        "env": "pipenv shell",
+        "pip-install": "pip install -r requirements.txt",
+        "start": "streamlit run app.py"
+    }
+}

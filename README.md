@@ -1,34 +1,25 @@
-# 📈 Cuadro de mandos personal 📊
- 
-> Usa este repositorio para crear un cuadro de mandos personal con Streamlit. Documenta los siguientes apartados del README.
-> Incluye en tu README la url de donde has publicado tu aplicación. Pon la `url` también en el `About` de tu repositorio.
+# 📈 Cuadro de mandos personal 📊 - [Enlace web](https://rafaelzgz-streamlit-2---cuadro-de-mandos-personal-ra-app-8zgo3i.streamlit.app/)
 
-## Objetivo
-Diseño de un cuadro de mandos personal para visualización e interacción con un conjunto de datos.
+## Introducción
 
-## Los datos
-Elige un conjunto de datos que te interese: educación, deportes, trabajo, música, econocomía, etc. 
+El proyecto consiste en un panel dónde poder visualizar los datos de un conjunto de libros, desde varias perspectivas, pudiendo filtrar los datos en función de sus parámetros. Además, también se pueden ver las tendencias generales fácilmente, por medio de gráficas.
 
-## Búsqueda de los datos
-Busca una fuente para tus datos. Puedes usar una API de un portal de datos abiertos, un conjunto ya publicado, recopilar personalmente datos por scraping, etc.
+## Datos
 
-## Documentación de los datos
-Documenta los datos que vas a usar y su origen. De dónde los has sacado, fuentes, etc. Describe los campos, los valores, las unidades, etc.
+Los datos se han generado poco a poco, usando la herramienta ChatGPT, luego se han ido ajustando para el proyecto. Cada libro tiene estos datos:
 
-## Prepara tu aplicación.
-La aplicación se llamará `app.py`. Añade un `requirements.txt` con las dependencias de tu aplicación. Ve actualizándolo a medida que vayas añadiendo librerías.
+-   Título del libro | En formato `string`
+-   Autor del libro | En formato `string`
+-   Editorial que lo publicó | En formato `string`
+-   Género al que pertenece | En formato `string`
+-   Número de páginas | En formato `int`
+-   Precio del libro | En formato `float`
+-   Año de escritura o publicación | En formato `int`
 
-## Carga y análisis de conjunto de dato con pandas
-Carga el conjunto de datos en un dataframe de pandas y realiza un análisis exploratorio de los datos.
+## Librerías
 
-## Visualización de los datos
-Prepara visualizaciones diferentes del dataframe en texto (tablas) o gráficas (histogramas, barras, etc.). Puedes usar matplotlib, seaborn, plotly, etc.
+En este proyecto aparte de usar Streamlit y Pandas, se ha usado también la librería `altair` para la creación de las gráficas.
 
-## Diseña la interacción que van a tener tus datos
-Qué inputs y outputs tendrán tus datos. 
+## Aplicación publicada.
 
-## Prepara la aplicación (cuadro de mandos) con Streamlit
-Prepara y prueba la aplicación.
-
-## Publica la aplicación.
-Publica la aplicación en Streamlit Cloud, en Heroku o en el servicio que prefieras https://docs.streamlit.io/streamlit-community-cloud/get-started/deploy-an-app
+[Streamlit Cloud](https://rafaelzgz-streamlit-2---cuadro-de-mandos-personal-ra-app-8zgo3i.streamlit.app/)
