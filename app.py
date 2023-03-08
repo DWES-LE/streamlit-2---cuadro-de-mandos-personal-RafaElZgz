@@ -29,7 +29,7 @@ st.markdown('### Gráficas')
 
 st.markdown('##### Tendencias representadas en una gráfica de barras')
 
-showBy = st.selectbox('Puedes escoger en base a qué quieres ver la gráfica', ('Editorial', 'Precio', 'Año', 'Páginas'))
+showBy = st.selectbox('Puedes escoger en base a qué quieres ver la gráfica', ('Año', 'Editorial', 'Páginas', 'Precio'))
 
 data_grouped = database.groupby(showBy).size()
 
@@ -53,17 +53,17 @@ st.markdown('---')
 st.markdown('### Datos acotados')
 
 st.markdown('##### - Por autor -')
-author = st.selectbox('Mostrar libros de un autor', database["Autor"].unique())
+author = st.selectbox('Mostrar libros de un autor', database.sort_values(by="Autor")["Autor"].unique())
 data_grouped = database[database['Autor'] == author]
 st.dataframe(data_grouped, 1000, 200)
 
 st.markdown('##### - Por editorial -')
-editorial = st.selectbox('Mostrar libros de una editorial', database["Editorial"].unique())
+editorial = st.selectbox('Mostrar libros de una editorial', database.sort_values(by="Editorial")["Editorial"].unique())
 data_grouped = database[database['Editorial'] == editorial]
 st.dataframe(data_grouped, 1000, 200)
 
 st.markdown('##### - Por género -')
-genre = st.selectbox('Mostrar libros de un género', database["Género"].unique())
+genre = st.selectbox('Mostrar libros de un género', database.sort_values(by="Género")["Género"].unique())
 data_grouped = database[database['Género'] == genre]
 st.dataframe(data_grouped, 1000, 200)
 
